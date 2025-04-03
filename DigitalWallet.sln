@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalWallet.Domain", "DigitalWallet.Domain\DigitalWallet.Domain.csproj", "{AFC604FC-87CD-40E6-963A-31BCF4F2BD03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalWallet.Application", "DigitalWallet.Application\DigitalWallet.Application.csproj", "{D1759FCF-71A2-4DFD-8CF2-A210683A7DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalWallet.Presentation", "DigitalWallet.Presentation\DigitalWallet.Presentation.csproj", "{51BEAC0A-3B5F-44CB-A868-17C51C072923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalWallet.Infrastructure", "DigitalWallet.Infrastructure\DigitalWallet.Infrastructure.csproj", "{465C9D9C-A0F1-4878-B329-0F8F29EE525A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{ECEADAA9-EC33-4CD3-B67A-99C1386AA347}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFC604FC-87CD-40E6-963A-31BCF4F2BD03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC604FC-87CD-40E6-963A-31BCF4F2BD03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC604FC-87CD-40E6-963A-31BCF4F2BD03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC604FC-87CD-40E6-963A-31BCF4F2BD03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1759FCF-71A2-4DFD-8CF2-A210683A7DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1759FCF-71A2-4DFD-8CF2-A210683A7DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1759FCF-71A2-4DFD-8CF2-A210683A7DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1759FCF-71A2-4DFD-8CF2-A210683A7DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51BEAC0A-3B5F-44CB-A868-17C51C072923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51BEAC0A-3B5F-44CB-A868-17C51C072923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51BEAC0A-3B5F-44CB-A868-17C51C072923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51BEAC0A-3B5F-44CB-A868-17C51C072923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465C9D9C-A0F1-4878-B329-0F8F29EE525A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465C9D9C-A0F1-4878-B329-0F8F29EE525A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465C9D9C-A0F1-4878-B329-0F8F29EE525A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465C9D9C-A0F1-4878-B329-0F8F29EE525A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
