@@ -43,3 +43,8 @@ docker-compose up --build
 
 3. **Acesse a aplicação:**
   Swagger: http://localhost:8080/swagger/index.html
+
+---
+
+### 👨‍💻 Autor
+Desenvolvido por Geovanne Callegaro
