@@ -1,4 +1,4 @@
-﻿namespace DigitalWallet.Domain.Entities
+namespace DigitalWallet.Domain.Entities
 {
     public class Wallet() : IEntity
     {
@@ -6,7 +6,7 @@
         public decimal Balance { get; set; } = 0;
 
         public Guid UserId { get; set; }
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         public void Deposit(decimal amount) => Balance += amount;
 

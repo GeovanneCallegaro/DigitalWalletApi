@@ -1,7 +1,9 @@
-﻿using DigitalWallet.Application.Common;
+using DigitalWallet.Application.Common;
 using DigitalWallet.Application.DTOs.Auth;
 using DigitalWallet.Application.Interfaces;
+
 using Microsoft.AspNetCore.Mvc;
+
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace DigitalWallet.Presentation.Controllers
@@ -27,7 +29,7 @@ namespace DigitalWallet.Presentation.Controllers
         {
             var result = await _authService.Login(loginRequest);
 
-            if(result.IsSuccess)
+            if (result.IsSuccess)
                 return StatusCode((int)result.HttpStatusCode, result);
 
             return StatusCode((int)result.HttpStatusCode, result);

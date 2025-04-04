@@ -1,6 +1,8 @@
 root = true
 
 [*.cs]
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1633.severity = none
 
 charset = utf-8
 indent_style = space

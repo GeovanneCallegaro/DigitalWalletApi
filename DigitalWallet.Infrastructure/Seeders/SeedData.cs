@@ -1,6 +1,7 @@
-﻿using DigitalWallet.Domain.Entities;
+using DigitalWallet.Domain.Entities;
 using DigitalWallet.Infrastructure.Data;
 using DigitalWallet.Infrastructure.Security;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace DigitalWallet.Infrastructure.Seeders

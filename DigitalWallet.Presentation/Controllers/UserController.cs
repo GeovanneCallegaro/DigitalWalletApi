@@ -1,7 +1,9 @@
-﻿using DigitalWallet.Application.Common;
+using DigitalWallet.Application.Common;
 using DigitalWallet.Application.DTOs.User;
 using DigitalWallet.Application.Interfaces;
+
 using Microsoft.AspNetCore.Mvc;
+
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace DigitalWallet.Presentation.Controllers

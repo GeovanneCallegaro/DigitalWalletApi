@@ -1,4 +1,4 @@
-﻿using DigitalWallet.Domain.Entities;
+using DigitalWallet.Domain.Entities;
 
 namespace DigitalWallet.Domain.Repositories
 {

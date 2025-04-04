@@ -1,4 +1,4 @@
-﻿namespace DigitalWallet.Domain.Entities
+namespace DigitalWallet.Domain.Entities
 {
     public interface IEntity
     {

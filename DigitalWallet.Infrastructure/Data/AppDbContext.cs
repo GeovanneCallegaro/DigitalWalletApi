@@ -1,4 +1,5 @@
-﻿using DigitalWallet.Domain.Entities;
+using DigitalWallet.Domain.Entities;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace DigitalWallet.Infrastructure.Data

@@ -1,4 +1,4 @@
-﻿namespace DigitalWallet.Domain.Repositories
+namespace DigitalWallet.Domain.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {

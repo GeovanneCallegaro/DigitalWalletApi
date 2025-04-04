@@ -1,4 +1,4 @@
-﻿namespace DigitalWallet.Infrastructure.Security
+namespace DigitalWallet.Infrastructure.Security
 {
     public class PasswordHasher
     {

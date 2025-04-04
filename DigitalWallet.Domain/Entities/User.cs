@@ -1,4 +1,4 @@
-﻿
+
 namespace DigitalWallet.Domain.Entities
 {
     public class User : IEntity

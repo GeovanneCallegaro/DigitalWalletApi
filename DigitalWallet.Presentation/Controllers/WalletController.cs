@@ -1,9 +1,11 @@
-﻿using DigitalWallet.Application.Common;
+using DigitalWallet.Application.Common;
 using DigitalWallet.Application.DTOs.Wallet;
 using DigitalWallet.Application.Interfaces;
 using DigitalWallet.Presentation.Filters;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace DigitalWallet.Presentation.Controllers
@@ -23,9 +25,9 @@ namespace DigitalWallet.Presentation.Controllers
         [ProducesResponseType(typeof(ResultData<GetBalanceByUserResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResultData<GetBalanceByUserResponse>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ResultData<GetBalanceByUserResponse>), StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> GetBalance([FromRoute] Guid userId) 
+        public async Task<IActionResult> GetBalance([FromRoute] Guid userId)
         {
-            var result = await _walletService.GetBalanceByUserId(new GetBalanceByUserDto() { UserId = userId});
+            var result = await _walletService.GetBalanceByUserId(new GetBalanceByUserDto() { UserId = userId });
 
             if (result.IsSuccess)
                 return StatusCode((int)result.HttpStatusCode, result);

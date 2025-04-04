@@ -1,4 +1,4 @@
-﻿namespace DigitalWallet.Infrastructure.Configuration
+namespace DigitalWallet.Infrastructure.Configuration
 {
     public class DatabaseOptions
     {

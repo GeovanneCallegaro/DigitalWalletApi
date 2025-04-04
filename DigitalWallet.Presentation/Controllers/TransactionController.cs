@@ -1,7 +1,9 @@
-﻿using DigitalWallet.Application.DTOs.Transaction;
+using DigitalWallet.Application.DTOs.Transaction;
 using DigitalWallet.Application.Interfaces;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace DigitalWallet.Presentation.Controllers
@@ -22,9 +24,9 @@ namespace DigitalWallet.Presentation.Controllers
         [ProducesResponseType(typeof(object), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetTransactions([FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
         {
-           var authenticatedUserId = User.FindFirst("userId")?.Value;
+            var authenticatedUserId = User.FindFirst("userId")?.Value;
 
-            var dto = new GetTransactionsByUserDto() 
+            var dto = new GetTransactionsByUserDto()
             {
                 UserId = Guid.Parse(authenticatedUserId),
                 StartDate = startDate,

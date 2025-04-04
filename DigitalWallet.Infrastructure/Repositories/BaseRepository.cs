@@ -1,6 +1,7 @@
-﻿using DigitalWallet.Domain.Entities;
+using DigitalWallet.Domain.Entities;
 using DigitalWallet.Domain.Repositories;
 using DigitalWallet.Infrastructure.Data;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace DigitalWallet.Infrastructure.Repositories
@@ -46,7 +47,7 @@ namespace DigitalWallet.Infrastructure.Repositories
             _dbSet.Remove(entity);
         }
 
-        public void UpdateRange(IEnumerable<TEntity> entities) 
+        public void UpdateRange(IEnumerable<TEntity> entities)
         {
             _dbSet.UpdateRange(entities);
         }
