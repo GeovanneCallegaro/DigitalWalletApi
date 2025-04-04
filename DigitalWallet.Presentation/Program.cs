@@ -8,6 +8,7 @@ using DigitalWallet.Infrastructure.Configuration;
 using DigitalWallet.Infrastructure.Data;
 using DigitalWallet.Infrastructure.Repositories;
 using DigitalWallet.Infrastructure.Security;
+using DigitalWallet.Infrastructure.Seeders;
 using DigitalWallet.Presentation.Filters;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -48,9 +49,15 @@ builder.Services.AddScoped<PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IWalletService, WalletService>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<IWalletRepository, WalletRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterUserValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<GetBalanceByUserValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<AddBalanceToUserValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<TransferBalanceValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<GetBalanceByUserValidator>();
 
 builder.Services.AddControllers();
@@ -90,15 +97,12 @@ builder.Services.AddScoped<UserIdAuthorizationFilter>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Digital Wallet v1");
-        c.RoutePrefix = "swagger";
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Digital Wallet v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseHttpsRedirection();
 
@@ -106,5 +110,15 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+if(app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+
+    await SeedData.InitializeAsync(context);
+}
+
 
 app.Run();

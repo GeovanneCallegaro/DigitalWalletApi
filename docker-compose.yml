@@ -6,18 +6,26 @@ services:
     container_name: postgres_container
     restart: always
     environment:
+      POSTGRES_DB: digital_wallet
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 2vPKNZ8PgF321QFyzQ
-      POSTGRES_DB: digital_wallet
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    networks:
-      - app_network
+
+  api:
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    container_name: digitalwallet_api
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
 
 volumes:
   postgres_data:
-
-networks:
-  app_network:

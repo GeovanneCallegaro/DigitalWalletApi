@@ -1,4 +1,5 @@
-﻿using DigitalWallet.Application.DTOs.Wallet;
+using DigitalWallet.Application.DTOs.Wallet;
+
 using FluentValidation;
 
 namespace DigitalWallet.Application.Validators.Wallet

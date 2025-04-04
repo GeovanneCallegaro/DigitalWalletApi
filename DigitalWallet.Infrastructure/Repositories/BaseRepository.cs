@@ -1,10 +1,11 @@
-﻿using DigitalWallet.Domain.Repositories;
+﻿using DigitalWallet.Domain.Entities;
+using DigitalWallet.Domain.Repositories;
 using DigitalWallet.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace DigitalWallet.Infrastructure.Repositories
 {
-    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
         protected readonly AppDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
@@ -18,6 +19,11 @@ namespace DigitalWallet.Infrastructure.Repositories
         public async Task<TEntity?> GetByIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetByIdsAsync(IEnumerable<Guid> ids)
+        {
+            return await _dbSet.Where(x => ids.Contains(x.Id)).ToListAsync();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
@@ -38,6 +44,11 @@ namespace DigitalWallet.Infrastructure.Repositories
         public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public void UpdateRange(IEnumerable<TEntity> entities) 
+        {
+            _dbSet.UpdateRange(entities);
         }
     }
 }

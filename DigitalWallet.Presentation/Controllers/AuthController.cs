@@ -1,4 +1,5 @@
-﻿using DigitalWallet.Application.DTOs.Auth;
+﻿using DigitalWallet.Application.Common;
+using DigitalWallet.Application.DTOs.Auth;
 using DigitalWallet.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -18,17 +19,18 @@ namespace DigitalWallet.Presentation.Controllers
 
         [HttpPost("login")]
         [SwaggerOperation(Summary = "Autenticar usuário", Description = "Autentica um usuário e retorna um token JWT.")]
-        [SwaggerResponse(StatusCodes.Status200OK, "Token gerado com sucesso", typeof(string))]
-        [SwaggerResponse(StatusCodes.Status400BadRequest, "Requisição inválida")]
-        [SwaggerResponse(StatusCodes.Status401Unauthorized, "Usuário ou senha inválidos")]
+        [ProducesResponseType(typeof(ResultData<LoginResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResultData<LoginResponse>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResultData<LoginResponse>), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResultData<LoginResponse>), StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login([FromBody] LoginDto loginRequest)
         {
             var result = await _authService.Login(loginRequest);
 
             if(result.IsSuccess)
-                return StatusCode((int)result.StatusCode, result.Data);
+                return StatusCode((int)result.HttpStatusCode, result);
 
-            return StatusCode((int)result.StatusCode, result.Errors);
+            return StatusCode((int)result.HttpStatusCode, result);
         }
     }
 }

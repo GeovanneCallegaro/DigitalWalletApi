@@ -1,4 +1,4 @@
-﻿namespace DigitalWallet.Application.Interfaces
+namespace DigitalWallet.Application.Interfaces
 {
     public interface IJwtService
     {

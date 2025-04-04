@@ -1,10 +1,12 @@
-﻿using DigitalWallet.Application.Common;
+using System.Net;
+
+using DigitalWallet.Application.Common;
 using DigitalWallet.Application.DTOs.Auth;
 using DigitalWallet.Application.Interfaces;
 using DigitalWallet.Domain.Repositories;
 using DigitalWallet.Infrastructure.Security;
+
 using FluentValidation;
-using System.Net;
 
 namespace DigitalWallet.Application.Services
 {
@@ -14,24 +16,24 @@ namespace DigitalWallet.Application.Services
         private readonly IJwtService _jwtService = jwtService;
         private readonly IValidator<LoginDto> _validator = validator;
 
-        public async Task<Result<string>> Login(LoginDto loginDto)
+        public async Task<ResultData<LoginResponse>> Login(LoginDto loginDto)
         {
             var validationResult = await _validator.ValidateAsync(loginDto);
             if (!validationResult.IsValid)
             {
-                return Result<string>.Failure(validationResult.Errors.Select(e => e.ErrorMessage).ToList(), HttpStatusCode.BadRequest);
+                return ResultData<LoginResponse>.Error(validationResult.Errors.Select(e => e.ErrorMessage).ToList(), HttpStatusCode.BadRequest);
             }
 
             var user = await _unitOfWork.Users.GetByEmailAsync(loginDto.Email);
             if (user == null)
-                return Result<string>.Failure($"Usuário não encontrado.", HttpStatusCode.NotFound);
+                return ResultData<LoginResponse>.Error(["Usuário não encontrado."], HttpStatusCode.NotFound);
 
             var verifyPassword = PasswordHasher.VerifyPassword(loginDto.Password, user.PasswordHash);
             if (!verifyPassword)
-                return Result<string>.Failure("Acesso negado. Senha incorreta.", HttpStatusCode.Unauthorized);
+                return ResultData<LoginResponse>.Error(["Acesso negado. Senha incorreta."], HttpStatusCode.Unauthorized);
 
             var token = _jwtService.GenerateToken(user.Email, user.Id.ToString());
-            return Result<string>.Success(token, HttpStatusCode.OK);
+            return ResultData<LoginResponse>.Success(new LoginResponse() { Token = token }, HttpStatusCode.OK);
         }
     }
 }
