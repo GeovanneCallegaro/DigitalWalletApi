@@ -1,4 +1,4 @@
-﻿using DigitalWallet.Application.Interfaces;
+using DigitalWallet.Application.Interfaces;
 using DigitalWallet.Application.Services;
 using DigitalWallet.Application.Validators.Auth;
 using DigitalWallet.Application.Validators.User;
@@ -118,6 +118,12 @@ if(app.Environment.IsDevelopment())
     var context = services.GetRequiredService<AppDbContext>();
 
     await SeedData.InitializeAsync(context);
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
 }
 
 
