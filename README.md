@@ -31,8 +31,8 @@ API para gerenciamento de carteiras digitais, com funcionalidades de autenticaç
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/digital-wallet
-cd digital-wallet
+git clone https://github.com/GeovanneCallegaro/DigitalWalletApi.git
+cd DigitalWalletApi
 ```
 
 2. **Execute o Docker Compose:**
