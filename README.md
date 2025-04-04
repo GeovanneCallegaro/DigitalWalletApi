@@ -31,7 +31,7 @@ API para gerenciamento de carteiras digitais, com funcionalidades de autenticaç
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/digital-wallet.git
+git clone https://github.com/seu-usuario/digital-wallet
 cd digital-wallet
 ```
 
